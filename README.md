@@ -5,7 +5,7 @@ It uses broadcasted weather data to show a byo wearing weather-suitable clothes.
 
 ## Screenshot
 
-[example screenshot]('wbExample.jpg')
+![example screenshot](wbExample.jpg)
 
 ## Installation
 
