@@ -1,6 +1,7 @@
 # MMM-WeatherBoy
 This is a [Magic Mirror](https://github.com/MichMich/MagicMirror) module for the kids! Show them what to wear outside!
-It uses broadcasted weather data to show a byo wearing weather-suitable clothes.
+It uses broadcasted weather data to show a boy wearing weather-suitable clothes.
+**Please note dependencies below**
 
 
 ## Screenshot
@@ -9,11 +10,13 @@ It uses broadcasted weather data to show a byo wearing weather-suitable clothes.
 
 ## Installation
 
-Just clone this module into your modules folder.
+1. clone this module into your modules folder
 
 ```
 git clone https://github.com/lavolp3/MMM-WeatherBoy.git
 ```
+2. Add it to your config.js 
+
 
 ## Sample configuration
 ```
