@@ -59,7 +59,7 @@ Module.register("MMM-WeatherBoy", {
 	notificationReceived: function (notification, payload) {
 		if(notification === "DARK_SKY_FORECAST_WEATHER_UPDATE") {
 			this.weatherData = payload.currently;
-			this.log("Received weather data: "+this.weatherData);
+			this.log("Received weather data: "+JSON.stringify(this.weatherData));
 			this.loading = false;
 			this.updateDom();
 			setTimeout(() => {
