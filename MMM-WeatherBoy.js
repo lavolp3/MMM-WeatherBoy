@@ -12,6 +12,7 @@ Module.register("MMM-WeatherBoy", {
 		height: 500,
 		randomColors: true,
 		brightness: 1.5,
+		debug: false,
 		wbElements: [			
 			'boy',
 			'sunchair',
@@ -58,7 +59,7 @@ Module.register("MMM-WeatherBoy", {
 	notificationReceived: function (notification, payload) {
 		if(notification === "DARK_SKY_FORECAST_WEATHER_UPDATE") {
 			this.weatherData = payload.currently;
-			//console.log(this.weatherData);
+			this.log("Received weather data: "+this.weatherData);
 			this.loading = false;
 			this.updateDom();
 			setTimeout(() => {
@@ -90,7 +91,6 @@ Module.register("MMM-WeatherBoy", {
 					el.style.zIndex = i;
 					wrapper.appendChild(el);
 				}
-				console.log(wrapper);
 			}
 		}				
 		return wrapper;
@@ -99,6 +99,7 @@ Module.register("MMM-WeatherBoy", {
 	showElements: function() {
 		this.show(['boy']);
 		var temp = this.weatherData.temperature;
+		this.log("Temperature: "+temp);
 		if (temp < 9) { 
 			this.show(['coat', 'hat', 'longs', 'shoes']);
 			if (temp < 4) {
@@ -114,6 +115,7 @@ Module.register("MMM-WeatherBoy", {
 		};
 		
 		var icon = this.weatherData.icon;
+		this.log("Weather condition: "+icon);
 		if (icon === "clear-day") {
 			this.show(['sun']);
 			if (temp > 20) {
@@ -131,16 +133,21 @@ Module.register("MMM-WeatherBoy", {
 	hueElements: function() {
 		['coat', 'longs', 'shirt', 'shorts', 'gloves', 'scarf', 'hat', 'shoes'].forEach(el => {
 		    rd = Math.floor(Math.random() * 360);
-			//console.log(rd);
+			this.log("Random number: "+rd);
 			document.getElementById(el).style.filter = `hue-rotate(${rd}deg) brightness(${this.config.brightness})`;
 		});
 	},
 	
 	show: function(elements) {
-		console.log('Showing ' + elements);
+		this.log('Showing ' + elements);
 		for (var e = 0; e < elements.length; e++) {
 			document.getElementById(elements[e]).style.display = 'block';
 		}
-	}
-
+	},
+	
+	log: function (msg) {
+		if (this.config && this.config.debug) {
+			console.log(this.name + ":", JSON.stringify(msg));
+		}
+	},
 });
