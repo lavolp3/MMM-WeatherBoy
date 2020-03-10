@@ -58,7 +58,7 @@ Module.register("MMM-WeatherBoy", {
 	notificationReceived: function (notification, payload) {
 		if(notification === "DARK_SKY_FORECAST_WEATHER_UPDATE") {
 			this.weatherData = payload.currently;
-			console.log(this.weatherData);
+			//console.log(this.weatherData);
 			this.loading = false;
 			this.updateDom();
 			setTimeout(() => {
@@ -131,7 +131,7 @@ Module.register("MMM-WeatherBoy", {
 	hueElements: function() {
 		['coat', 'longs', 'shirt', 'shorts', 'gloves', 'scarf', 'hat', 'shoes'].forEach(el => {
 		    rd = Math.floor(Math.random() * 360);
-			console.log(rd);
+			//console.log(rd);
 			document.getElementById(el).style.filter = `hue-rotate(${rd}deg) brightness(${this.config.brightness})`;
 		});
 	},
@@ -143,29 +143,4 @@ Module.register("MMM-WeatherBoy", {
 		}
 	}
 
-	/*currently:
-					summary: "Klar"
-					icon: "clear-day"
-					precipType: "rain"
-					temperature: 6.78
-					apparentTemperature: 2.47
-								'boy',
-								'sun',
-								'sunchair',
-								'shirt',
-								'shorts',
-								'shoes',
-								'pullover',
-								'longs',
-								'jacket',
-								'coat',
-								'hat',
-								'scarf',
-								'gloves',
-								'clouds',
-								'rain',
-								'umbrella',
-								'snow',
-								'snowman'
-								],*/
 });
