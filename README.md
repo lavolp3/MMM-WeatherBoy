@@ -40,6 +40,7 @@ Following options are configurable via above config:
 | `height` | `400` | Height of the module. Width will be autoset |
 | `randomColors` | true | Colors clothes randomly with every update |
 | `brightness` | 1.5 | Adjust brightness of the picture. Value of 1 is original brightness |
+| `debug` | false | Debug mode. Increases output to dev console. |
 
 
 ## Weather module dependency
