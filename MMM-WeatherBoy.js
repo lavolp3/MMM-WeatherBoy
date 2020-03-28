@@ -13,25 +13,25 @@ Module.register("MMM-WeatherBoy", {
 		randomColors: true,
 		brightness: 1.5,
 		debug: false,
-		wbElements: [			
-			'boy',
-			'sunchair',
-			'shirt',
-			'shorts',
-			'shoes',
-			'pullover',
-			'longs',
-			'jacket',
-			'coat',
-			'hat',
-			'scarf',
-			'gloves',
-			'umbrella',
-			'sun',
-			'clouds',
-			'rain',
-			'snow',
-			'snowman'
+		wbElements: [
+			'wb_boy',
+			'wb_sunchair',
+			'wb_shirt',
+			'wb_shorts',
+			'wb_shoes',
+			'wb_pullover',
+			'wb_longs',
+			'wb_jacket',
+			'wb_coat',
+			'wb_hat',
+			'wb_scarf',
+			'wb_gloves',
+			'wb_umbrella',
+			'wb_sun',
+			'wb_clouds',
+			'wb_rain',
+			'wb_snow',
+			'wb_snowman'
 		],
 		srcFolder: 'wbelements/',
 	},
@@ -92,59 +92,59 @@ Module.register("MMM-WeatherBoy", {
 					wrapper.appendChild(el);
 				}
 			}
-		}				
+		}
 		return wrapper;
 	},
-	
+
 	showElements: function() {
-		this.show(['boy']);
+		this.show(['wb_boy']);
 		var temp = this.weatherData.temperature;
 		this.log("Temperature: "+temp);
-		if (temp < 9) { 
-			this.show(['coat', 'hat', 'longs', 'shoes']);
+		if (temp < 9) {
+			this.show(['wb_coat', 'wb_hat', 'wb_longs', 'wb_shoes']);
 			if (temp < 4) {
-				this.show(['scarf', 'gloves']);
+				this.show(['wb_scarf', 'wb_gloves']);
 			}
 		} else if (temp < 20) {
-			this.show(['pullover', 'longs', 'shoes']);
+			this.show(['wb_pullover', 'wb_longs', 'wb_shoes']);
 			if (temp < 15) {
-				this.show(['jacket']);
+				this.show(['wb_jacket']);
 			}
 		} else if (temp < 26) {
-			this.show(['shirt', 'shorts']);
+			this.show(['wb_shirt', 'wb_shorts']);
 		};
-		
+
 		var icon = this.weatherData.icon;
 		this.log("Weather condition: "+icon);
 		if (icon === "clear-day") {
-			this.show(['sun']);
+			this.show(['wb_sun']);
 			if (temp > 20) {
-				this.show(['sunchair']);
+				this.show(['wb_sunchair']);
 			}
 		} else if (icon === "partly-cloudy-day") {
-			this.show(['clouds']);
+			this.show(['wb_clouds']);
 		} else if (icon === "rain") {
-			this.show(['rain', 'umbrella']);
+			this.show(['wb_rain', 'wb_umbrella']);
 		} else if (icon === "snow") {
-			this.show(['clouds', 'snow', 'snowman']);
+			this.show(['wb_clouds', 'wb_snow', 'wb_snowman']);
 		}
 	},
-	
+
 	hueElements: function() {
-		['coat', 'longs', 'shirt', 'shorts', 'gloves', 'scarf', 'hat', 'shoes'].forEach(el => {
+		['wb_coat', 'wb_longs', 'wb_shirt', 'wb_shorts', 'wb_gloves', 'wb_scarf', 'wb_hat', 'wb_shoes'].forEach(el => {
 		    rd = Math.floor(Math.random() * 360);
-			this.log("Random number: "+rd);
+			//this.log("Random number: "+rd);
 			document.getElementById(el).style.filter = `hue-rotate(${rd}deg) brightness(${this.config.brightness})`;
 		});
 	},
-	
+
 	show: function(elements) {
 		this.log('Showing ' + elements);
 		for (var e = 0; e < elements.length; e++) {
 			document.getElementById(elements[e]).style.display = 'block';
 		}
 	},
-	
+
 	log: function (msg) {
 		if (this.config && this.config.debug) {
 			console.log(this.name + ":", JSON.stringify(msg));
