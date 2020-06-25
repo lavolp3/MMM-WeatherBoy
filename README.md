@@ -38,8 +38,9 @@ Following options are configurable via above config:
 | **Option** | **Default** | **Description** |
 | --- | --- | --- |
 | `height` | `400` | Height of the module. Width will be autoset |
-| `randomColors` | true | Colors clothes randomly with every update |
+| `randomColors` | true | Color clothes randomly with every update |
 | `brightness` | 1.5 | Adjust brightness of the picture. Value of 1 is original brightness |
+| `teint`  | 2 | Choose between teint colors. 1 is light, 5 is dark teint. | 
 | `debug` | false | Debug mode. Increases output to dev console. |
 
 

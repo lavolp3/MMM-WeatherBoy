@@ -12,6 +12,7 @@ Module.register("MMM-WeatherBoy", {
 		height: 500,
 		randomColors: true,
 		brightness: 1.5,
+        teint: 2,
 		debug: false,
 		wbElements: [
 			'wb_boy',
@@ -87,8 +88,8 @@ Module.register("MMM-WeatherBoy", {
 					el.src = this.file(this.config.srcFolder) + elements[i] + '.png';
 					el.id = elements[i];
 					el.style.height = this.config.height + "px";
-					el.style.display = "none";
-					el.style.zIndex = i;
+					el.style.opacity = "0";
+					el.style.zIndex = Math.ceil(i/2);
 					wrapper.appendChild(el);
 				}
 			}
@@ -97,7 +98,8 @@ Module.register("MMM-WeatherBoy", {
 	},
 
 	showElements: function() {
-		this.show(['wb_boy']);
+        var wbBoy = "wb_boy" + this.config.teint;
+		this.show([wbBoy]);
 		var temp = this.weatherData.temperature;
 		this.log("Temperature: "+temp);
 		if (temp < 9) {
@@ -141,7 +143,7 @@ Module.register("MMM-WeatherBoy", {
 	show: function(elements) {
 		this.log('Showing ' + elements);
 		for (var e = 0; e < elements.length; e++) {
-			document.getElementById(elements[e]).style.display = 'block';
+			document.getElementById(elements[e]).style.opacity = '1';
 		}
 	},
 
