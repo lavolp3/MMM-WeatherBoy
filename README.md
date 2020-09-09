@@ -6,7 +6,7 @@ It uses broadcasted weather data to show a boy wearing weather-suitable clothes.
 
 ## Screenshot
 
-![example screenshot](wbExample.jpg)
+![example screenshot](https://raw.githubusercontent.com/lavolp3/MMM-WeatherBoy/master/wbExample.jpg)
 
 ## Installation
 
